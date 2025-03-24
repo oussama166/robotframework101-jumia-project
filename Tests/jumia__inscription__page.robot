@@ -8,13 +8,14 @@ Resource            ../Resources/variables/variables_recherche.robot
 Resource            ../Resources/variables/variables_inscription.robot
 Resource            ../Resources/keywords/keywords_recherche.robot
 
-Suite Setup         Acces to Jumia Home page    BASE_URL_CUSTOM=https://my.jumia.ma/interaction/1ybCGZ0RRXQxpRQgHHamo/fr-ma/identification
+Suite Setup         Acces to Jumia Home page with headless    BASE_URL_CUSTOM=${BASE_URL}
 Suite Teardown      Close All Browser Navigation to home page
 
 
 *** Test Cases ***
-⁡⁢⁣⁢# //ANCHOR - The Transition from home page to connection page is detected by cloudflare⁡
-# Test Load Connection Page by the connection button
+# ⁡⁢⁣⁢# //ANCHOR - The Transition from home page to connection page is detected by cloudflare⁡
+
+Test Load Connection Page by the connection button
     # Given    I am on the home page of "jumia"
     # When    I click on the "se connecter" button
     # Then    I need to redirect to the connection page
@@ -25,9 +26,9 @@ Suite Teardown      Close All Browser Navigation to home page
     Click Element    locator=//label[@for="dpdw-login"]
     Click Link    locator=${SE_CONNECTER_BUTTON}
     Sleep    time_=5s
-    # Capture Page Screenshot    filename=Connection.png
+    Capture Page Screenshot    filename=Connection.png
 
-Test Load Connection using direct link
-    [Documentation]    Charger la page de connection a traver le lien direct du jumia connect
-    [Tags]    suite2-test2
-    Capture Page Screenshot    filename=connectionPage.png
+# Test Load Connection using direct link
+#    [Documentation]    Charger la page de connection a traver le lien direct du jumia connect
+#    [Tags]    suite2-test2
+#    Capture Page Screenshot    filename=connectionPage.png

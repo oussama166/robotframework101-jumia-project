@@ -19,6 +19,7 @@ Acces to Jumia Home page
     [Documentation]    Overture la page principle de "Jumia"
     [Arguments]    ${BASE_URL_CUSTOM}
     Open Browser    ${BASE_URL_CUSTOM}    browser=firefox
+    Maximize Browser Window
     Sleep    3s
 
 Open Browser Navigation to home page
@@ -33,3 +34,7 @@ Insure that the we change the location
     [Tags]    test keyword
     ${current_location}=    Get Location
     Should Not Be Equal    ${current_location}    ${BASE_URL}
+
+Close Popup
+    [Documentation]    Fermer le popup qui apare dans la page du home
+    Click Element    locator=${CLOSE_BUTTON_IN_POPUP}

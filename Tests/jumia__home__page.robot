@@ -6,7 +6,7 @@ Library             SeleniumLibrary    screenshot_root_directory=./Screenshots/S
 Resource            ../Resources/variables/variables_recherche.robot
 Resource            ../Resources/keywords/keywords_recherche.robot
 
-Suite Setup         Acces to Jumia Home page with headless    BASE_URL_CUSTOM=${BASE_URL}
+Suite Setup         Acces to Jumia Home page    BASE_URL_CUSTOM=${BASE_URL}
 Suite Teardown      Close All Browser Navigation to home page
 
 
@@ -19,7 +19,7 @@ Test Home Page Load
 Test Close The Main popup window in home page
     [Documentation]    Fermer le popup qui apare dans la page du home
     [Tags]    suite1-test2
-    Click Element    locator=${CLOSE_BUTTON_IN_POPUP}
+    Close Popup
     Capture Page Screenshot    filename=popupDown.png
 
 Test Search a Product
@@ -30,3 +30,15 @@ Test Search a Product
     Sleep    time_=5s
     Capture Page Screenshot    filename=searchResult.png
     Insure that the we change the location
+
+Test Open Ipad Section Via Menu SECTION
+    [Documentation]    Ouvrir la section Ipad a traver le menu
+    [Tags]    suite1-test4
+    Go To    https://www.jumia.ma/telephone-tablette/
+    Close Popup
+    Mouse Over    locator=${MENU_SECTION}
+    Mouse Over    locator=${DROPDOWN_MENU_SECTION_PHONE}
+    Wait Until Element Contains    locator=${IPAD_SECTION}    text=iPad    timeout=10s
+    Click Element    locator=${IPAD_SECTION}
+    Sleep    time_=5s
+    Capture Page Screenshot    filename=ipadSection.png

@@ -1,0 +1,8 @@
+### vscode
+.vscode/
+### idea
+.idea/
+### key
+Presentation Robotframework.key
+### logs ignored
+*.log
